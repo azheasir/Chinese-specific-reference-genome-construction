@@ -1,4 +1,4 @@
-# Chinese-specific-reference-genome-construction-
+# Chinese specific reference genome construction
 ```Bash
 echo "HELLO"
 ```
