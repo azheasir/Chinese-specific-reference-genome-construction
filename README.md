@@ -1,5 +1,5 @@
 # Chinese specific reference genome construction
-The following content presents the experimental data, process, and results of the article "Chinese specific reference gene construction based on large scale population genetic variations"
+The following content presents the experimental data and process of the article "Chinese specific reference gene construction based on large scale population genetic variations"
 
 Please let us know, if you find mistakes or want your tool added.
 # Get tools
@@ -56,3 +56,14 @@ perl simug.pl
 ```Bash
 perl simug.pl
 ```
+3.Comparison of Chinese sequencing data with the newly constructed reference genome and the original GRCh38 reference genome:
+```Bash
+bwa index
+bwa mem
+samtools view
+samtools sort
+samtools index
+bamqc
+```
+
+
