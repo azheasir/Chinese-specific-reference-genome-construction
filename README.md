@@ -10,22 +10,41 @@ source activate sv
 conda install simuG== bwa==  samtools==  qualimap==  
 ```
 # Get data
-1.Download variant fragments(Taking downloading SNV samples as an example)
+1.Download variant fragments(Taking downloading SNV samples as an example):
 ```Bash
 wget -c http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC2/release/v1.0/integrated_callset/freeze3.snv.alt.vcf.gz
 ```
-2.Extract Asian samples from the downloaded variant fragments file and add AC AN columns
+2.Extract Asian samples from the downloaded variant fragments file and add AC AN columns:
 ```Bash
 bcftools view -s HG00512,HG00513,NA18939,HG00864,NA18534,HG01596 -o eastAisa.snv.alt.vcf freeze3.snv.alt.vcf
 ```
-3.Download Grch38 reference genome
+3.Download Grch38 reference genome:
 ```Bash
 wget -c https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001405.26/GCF_000001405.26_GRCh38_genomic.fna.gz
 ```
-4.Download genomic samples from the three ethnic groups of Han in the north, Han in the south, and Dai(NA18525、NA18644、NA18757、NA18747、NA18561；HG00458、HG00717、HG00476、HG00534、HG00716；HG00759、HG01799、HG01028、HG02389、HG01812,Taking downloading NA18525 as an example))
+4.Download genomic samples from the three ethnic groups of Han in the north, Han in the south, and Dai(NA18525、NA18644、NA18757、NA18747、NA18561；HG00458、HG00717、HG00476、HG00534、HG00716；HG00759、HG01799、HG01028、HG02389、HG01812,Taking downloading NA18525 as an example)):
 ```Bash
 wget -c 	ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741372/SRR741372_1.fastq.gz
 wget -c 	ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741372/SRR741372_2.fastq.gz
 wget -c   ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741373/SRR741373_1.fastq.gz
 wget -c   ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741373/SRR741373_2.fastq.gz
+```
+# Experiment process
+1.Using AC/AN to calculate AF, and then classifying the original East Asian variation fragments using different gradients of AF values（Taking the indel group with AF ≥ 0 as an example）:
+```python
+import vcf
+vcf_reader = vcf.Reader(open('D:\基因\eastAisa.indel.alt.vcf','r'))
+vcf_writer = vcf.Writer(open('D:\基因\eastAisa1.indel.alt.vcf','w'),vcf_reader)
+e=0
+g=0
+d=0
+r=0.0000
+for record in vcf_reader:
+    a=record.INFO['AC']
+    b=record.INFO['AN']
+    c=a[0]
+    f=record.POS
+    if b!=0:
+            d=c/b
+            if d>=r:   vcf_writer.write_record(record)
 ```
