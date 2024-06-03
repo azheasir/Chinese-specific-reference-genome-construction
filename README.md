@@ -18,3 +18,14 @@ wget -c http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC2/releas
 ```Bash
 bcftools view -s HG00512,HG00513,NA18939,HG00864,NA18534,HG01596 -o eastAisa.snv.alt.vcf freeze3.snv.alt.vcf
 ```
+3.Download Grch38 reference genome
+```Bash
+wget -c https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001405.26/GCF_000001405.26_GRCh38_genomic.fna.gz
+```
+4.Download genomic samples from the three ethnic groups of Han in the north, Han in the south, and Dai(NA18525、NA18644、NA18757、NA18747、NA18561；HG00458、HG00717、HG00476、HG00534、HG00716；HG00759、HG01799、HG01028、HG02389、HG01812,Taking downloading NA18525 as an example))
+```Bash
+wget -c 	ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741372/SRR741372_1.fastq.gz
+wget -c 	ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741372/SRR741372_2.fastq.gz
+wget -c   ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741373/SRR741373_1.fastq.gz
+wget -c   ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR741/SRR741373/SRR741373_2.fastq.gz
+```
