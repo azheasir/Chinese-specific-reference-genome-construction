@@ -48,3 +48,11 @@ for record in vcf_reader:
             d=c/b
             if d>=r:   vcf_writer.write_record(record)
 ```
+2.Using SimuG for Reference Genome Correction and Generation of New Reference Genomes(Using SNV to modify grch38）:
+```Bash
+perl simug.pl
+```
+（Using SV/INDEL to modify grch38）:
+```Bash
+perl simug.pl
+```
