@@ -3,7 +3,7 @@ The following content presents the experimental data, process, and results of th
 
 Please let us know, if you find mistakes or want your tool added.
 #Get tools
-Information how to install 'conda' and add the 'bioconda' channel is available on https://www.baidu.com/.
+Information how to install 'conda' and add the 'bioconda' channel is available on https://bioconda.github.io/.
 ```Bash
 conda create --name sv python=3.6
 source activate sv
