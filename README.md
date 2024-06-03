@@ -9,7 +9,7 @@ conda create --name sv python=3.6
 source activate sv
 conda install simuG== bwa==  samtools==  qualimap==  
 ```
-#Get data
+# Get data
 1.Download variant fragments(Taking downloading SNV samples as an example)
 ```Bash
 wget -c http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_collections/HGSVC2/release/v1.0/integrated_callset/freeze3.snv.alt.vcf.gz
