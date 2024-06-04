@@ -7,7 +7,7 @@ Information how to install 'conda' and add the 'bioconda' channel is available o
 ```Bash
 conda create --name gene python=3.8
 source activate gene
-conda install bwa==0.7.17  samtools==1.6  QualiMap
+conda install bwa==0.7.17  samtools==1.6  qualimap
 git clone https://github.com/yjx1217/simuG.git 
 ```
 # Get data
