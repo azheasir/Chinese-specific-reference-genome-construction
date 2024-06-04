@@ -59,12 +59,11 @@ perl simuG.pl -refseq GCF_000001405.26_GRCh38_genomic.fna.gz -indel_vcf eastAisa
 ```
 3.Comparison of Chinese sequencing data with the newly constructed reference genome and the original GRCh38 reference genome:
 ```Bash
-bwa index
-bwa mem
-samtools view
-samtools sort
-samtools index
-bamqc
+bwa index output_prefixsnv1.simseq.genome.fa
+bwa mem -t 16 output_prefixsnv1.simseq.genome.fa SRR792936_1.fastq.gz SRR792936_2.fastq.gz -o outputbh1snv11.sam
+bwa mem -t 16 output_prefixsnv1.simseq.genome.fa SRR792963_1.fastq.gz SRR792963_2.fastq.gz -o outputbh1snv12.sam
+samtools merge -@16 outputbh1snv1.bam outputbh1snv11.sam outputbh1snv12.sam
+samtools sort -@16 outputbh1snv1.bam > outputbh1snv1.sort.bam
+bwa index outputbh1snv1.sort.bam
+qualimap bamqc -nt 16 -bam --java-mem-size=24G outputbh1snv1.sort.bam  -outdir outputbh1snv1
 ```
-
-
