@@ -5,9 +5,10 @@ Please let us know, if you find mistakes or want your tool added.
 # Get tools
 Information how to install 'conda' and add the 'bioconda' channel is available on https://bioconda.github.io/.
 ```Bash
-conda create --name sv python=3.6
-source activate sv
-conda install simuG== bwa==  samtools==  qualimap==  
+conda create --name gene python=3.8
+source activate gene
+conda install bwa==0.7.17  samtools==1.6  QualiMap
+git clone https://github.com/yjx1217/simuG.git 
 ```
 # Get data
 1.Download variant fragments(Taking downloading SNV samples as an example):
@@ -50,11 +51,11 @@ for record in vcf_reader:
 ```
 2.Using SimuG for Reference Genome Correction and Generation of New Reference Genomes(Using SNV to modify grch38）:
 ```Bash
-perl simug.pl
+perl simuG.pl -refseq GCF_000001405.26_GRCh38_genomic.fna.gz -snp_vcf eastAisa1.snv.alt.vcf -prefix output_prefixsnv1
 ```
 （Using SV/INDEL to modify grch38）:
 ```Bash
-perl simug.pl
+perl simuG.pl -refseq GCF_000001405.26_GRCh38_genomic.fna.gz -indel_vcf eastAisa1.indel.alt.vcf -prefix output_prefixindel1
 ```
 3.Comparison of Chinese sequencing data with the newly constructed reference genome and the original GRCh38 reference genome:
 ```Bash
